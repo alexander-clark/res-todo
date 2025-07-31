@@ -1,0 +1,12 @@
+<div class="task">
+  <%= form_for(command, as: :task, url: add_tasks_path) do |form| %>
+    <div class="form-group">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: (command.errors[:name].any? ? 'is-invalid form-control' : 'form-control') %>
+      <% command.errors.full_messages_for(:name).each do |message| %>
+        <div class="invalid-feedback d-block"><%= message %></div>
+      <% end %>
+    </div>
+    <%= form.submit 'Add task', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_07_31_075630) do
+ActiveRecord::Schema[7.1].define(version: 2025_07_31_130237) do
   create_table "event_store_events", force: :cascade do |t|
     t.string "event_id", limit: 36, null: false
     t.string "event_type", null: false
@@ -34,6 +34,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_07_31_075630) do
     t.index ["stream", "event_id"], name: "index_event_store_events_in_streams_on_stream_and_event_id", unique: true
     t.index ["stream", "position"], name: "index_event_store_events_in_streams_on_stream_and_position", unique: true
   end
+
+# Could not dump table "tasks" because of following StandardError
+#   Unknown type 'uuid' for column 'id'
 
   add_foreign_key "event_store_events_in_streams", "event_store_events", column: "event_id", primary_key: "event_id"
 end

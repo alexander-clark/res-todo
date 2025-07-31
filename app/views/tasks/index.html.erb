@@ -1,0 +1,11 @@
+<h1>Tasks</h1>
+
+<div class="tasks">
+  <% @tasks.each do |task| %>
+    <%= render partial: 'task', locals: { task: task } %>
+  <% end %>
+
+  <h2>Add Task</h2>
+
+  <%= render 'form', command: @command %>
+</div>
